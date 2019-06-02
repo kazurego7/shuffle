@@ -1,9 +1,9 @@
 module Main exposing (Model, Msg(..), init, main, nDieView, subscriptions, update, view)
 
 import Browser
-import Html exposing (..)
-import Html.Attributes exposing (..)
-import Html.Events exposing (..)
+import Html exposing (Html, button, div, h1, input, text)
+import Html.Attributes exposing (placeholder, value)
+import Html.Events exposing (onClick, onInput)
 import Random
 import Random.Extra
 import Random.List
@@ -13,6 +13,7 @@ import Random.List
 -- MAIN
 
 
+main : Program () Model Msg
 main =
     Browser.element
         { init = init
@@ -36,7 +37,7 @@ type alias Model =
 init : () -> ( Model, Cmd Msg )
 init _ =
     ( { range = ( 0, 6 )
-      , n = 2
+      , n = 36
       , nDieFaces = List.repeat 2 (List.range 0 6)
       }
     , Cmd.none
@@ -95,7 +96,7 @@ update msg model =
 
 
 subscriptions : Model -> Sub Msg
-subscriptions model =
+subscriptions _ =
     Sub.none
 
 
