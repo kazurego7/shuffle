@@ -1,7 +1,7 @@
 module Main exposing (Model, Msg(..), init, main, nDieView, subscriptions, update, view)
 
 import Browser
-import Html exposing (Html, button, div, h1, input, text)
+import Html exposing (Html, button, div, input, p, text)
 import Html.Attributes exposing (placeholder, value)
 import Html.Events exposing (onClick, onInput)
 import Random
@@ -37,7 +37,7 @@ type alias Model =
 init : () -> ( Model, Cmd Msg )
 init _ =
     ( { range = ( 0, 6 )
-      , n = 36
+      , n = 44
       , nDieFaces = List.repeat 2 (List.range 0 6)
       }
     , Cmd.none
@@ -124,5 +124,5 @@ view model =
     div []
         [ input [ placeholder "n", value (String.fromInt model.n), onInput toChange ] []
         , button [ onClick Roll ] [ text "Roll" ]
-        , h1 [] (nDieView model)
+        , p [] (nDieView model)
         ]
